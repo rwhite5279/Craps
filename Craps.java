@@ -2,8 +2,8 @@
 /**
  * Write a description of class Craps here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Richard White
+ * @version 2021-02-08
  */
 public class Craps
 {
