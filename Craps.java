@@ -5,29 +5,50 @@
  * @author (your name)
  * @version (a version number or a date)
  */
+
+
+import java.util.Scanner;
+
 public class Craps
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Craps
-     */
-    public Craps()
+    public static void main(String[] args)
     {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+        Scanner in = new Scanner(System.in);
+        
+        // Start with one game of Craps
+        System.out.println("Let's play Craps!");
+        System.out.print("Press [Enter] to roll the dice...");
+        in.nextLine();
+        Die die1 = new Die();
+        Die die2 = new Die();
+        System.out.println("You rolled a " + die1.getRoll() + " and a " + die2.getRoll());
+        int total = die1.rollDie() + die2.rollDie();
+        if (total == 7 || total == 11)
+        {
+            System.out.println("You win!");
+        }
+        else if (total == 2 || total == 3 || total == 12)
+        {
+            System.out.println("You lose. :(");
+        }
+        else
+        {
+            int point = total;
+            System.out.println("Keep rolling to try to make your point, " + point);
+            System.out.print("Press [Enter] to roll the dice...");
+            in.nextLine();
+            total = die1.rollDie() + die2.rollDie();
+            System.out.println("You rolled a " + die1.getRoll() + " and a " + die2.getRoll());
+            while (total != point && total != 7)
+            {
+                System.out.println("Keep rolling...");
+                System.out.print("Press [Enter] to roll the dice...");
+                in.nextLine();
+                total = die1.rollDie() + die2.rollDie();
+                System.out.println("You rolled a " + die1.getRoll() + " and a " + die2.getRoll());
+            }
+        }
+        
+        
     }
 }
